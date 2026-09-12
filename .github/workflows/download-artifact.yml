@@ -1,0 +1,19 @@
+name: Artifacts download pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: application-artifact
+
+      - name: Verify file content
+        run: cat app.js
