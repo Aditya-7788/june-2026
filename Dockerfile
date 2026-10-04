@@ -1,0 +1,8 @@
+FROM ubuntu:latest 
+RUN apt update -y #updating the package 
+RUN apt install nginx -y
+RUN rm /var/www/html/index.nginx-debian.html
+COPY index.html /var/www/html/index.nginx-debian.html
+EXPOSE 80 
+ENTRYPOINT [ "nginx"] 
+CMD [ "-g", "daemon off;" ]
