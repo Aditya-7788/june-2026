@@ -10,19 +10,26 @@ spec:
     matchLabels:
       batch: june-2026
   template:
-      metadata:
-        labels:
-          batch: june-2026
-      spec:
-        containers:
-          - name: nginx-webserver
-            image: nginx
-            ports:
-              - containerPort: 80
-            resources:
-              requests:
-                memory: "64Mi"
-                cpu: "250m"
-              limits:
-                memory: "128Mi"
-                cpu: "500m"
+    metadata:
+      labels:
+        batch: june-2026
+    spec:
+      containers:
+        - name: finpulse
+          image: aditya7788/fintech-job-portal:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
