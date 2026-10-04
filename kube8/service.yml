@@ -5,8 +5,8 @@ metadata:
   name: cluster-ip-service-june
 spec:
   selector:
-    app: web
-  type: ClusterIP 
+    batch: june-2026  
+  type: ClusterIP
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 80   
